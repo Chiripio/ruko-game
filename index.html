@@ -1,30 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruko Game - Categorías</title>
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruko Game - Categorías</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
-<body>
-    <header>
-        <h1>Ruko Game</h1>
-        <a href="registro.html" class="btn-registro">Registrarse</a>
-    </header>
+<body class="bg-black text-white">
 
-    <nav>
-        <h2>Seleccione una categoría</h2>
-        <ul class="categorias">
-            <li><a href="categorias/accion.html" class="categoria">🎮 Acción</a></li>
-            <li><a href="categorias/aventura.html" class="categoria">🌍 Aventura</a></li>
-            <li><a href="categorias/estrategia.html" class="categoria">♟️ Estrategia</a></li>
-            <li><a href="categorias/rpg.html" class="categoria">⚔️ RPG</a></li>
-            <li><a href="categorias/indi.html" class="categoria">🕹️ Indie</a></li>
-        </ul>
-    </nav>
+  <!-- Encabezado -->
+  <header class="d-flex justify-content-between align-items-center p-3">
+    <h1 class="m-0">Ruko Game</h1>
+    <div class="d-flex align-items-center">
+      <div id="infoUsuario" class="me-3 text-warning small text-end"></div>
+      <a id="btnLogin" href="login.html" class="btn btn-outline-light me-2">Iniciar sesión</a>
+      <a id="btnRegistro" href="registro.html" class="btn btn-warning me-2">Registrarse</a>
+      <a id="btnPerfil" href="perfil.html" class="btn btn-outline-info me-2" style="display: none;">👤 Mi perfil</a>
+      <button id="btnCerrarSesion" class="btn btn-danger me-2" style="display: none;">Cerrar sesión</button>
+      <a href="carrito.html" class="position-relative">
+        <img src="img/carrito.png" alt="Carrito" width="32" height="32" />
+        <span id="contadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-black" style="font-size: 0.75rem;">0</span>
+      </a>
+    </div>
+  </header>
 
-    <footer>
-        <p>© 2025 Ruko Game - Todos los derechos reservados</p>
-    </footer>
+  <!-- Contenido principal -->
+  <main class="container text-center mt-4">
+    <h2 class="text-warning">Seleccione una categoría</h2>
+
+    <!-- Solo para administrador -->
+    <div id="adminPanel" class="mb-4" style="display: none;">
+      <a href="productos.html" class="btn btn-outline-warning">🛠️ Gestionar productos</a>
+    </div>
+
+    <ul class="list-unstyled">
+      <li><a href="categorias/accion.html" class="categoria d-block my-3">🎮 Acción</a></li>
+      <li><a href="categorias/aventura.html" class="categoria d-block my-3">🌍 Aventura</a></li>
+      <li><a href="categorias/estrategia.html" class="categoria d-block my-3">♟️ Estrategia</a></li>
+      <li><a href="categorias/rpg.html" class="categoria d-block my-3">⚔️ RPG</a></li>
+      <li><a href="categorias/indi.html" class="categoria d-block my-3">🕹️ Indie</a></li>
+    </ul>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center mt-4 p-3 bg-dark">
+    <p class="m-0">© 2025 Ruko Game - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/utilidades.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/roles.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const contador = document.getElementById("contadorCarrito");
+      if (contador) contador.textContent = carrito.length;
+
+      const usuario = JSON.parse(localStorage.getItem("usuario"));
+      if (usuario) {
+        const info = document.getElementById("infoUsuario");
+        info.innerHTML = `👋 Hola, <strong>${usuario.nombre}</strong> (${usuario.rol})`;
+
+        // Mostrar perfil y cerrar sesión
+        document.getElementById("btnPerfil").style.display = "inline-block";
+        document.getElementById("btnCerrarSesion").style.display = "inline-block";
+
+        // Ocultar login y registro
+        document.getElementById("btnLogin").style.display = "none";
+        document.getElementById("btnRegistro").style.display = "none";
+
+        // Mostrar panel admin
+        if (usuario.rol === "admin") {
+          document.getElementById("adminPanel").style.display = "block";
+        }
+      }
+
+      // Botón cerrar sesión
+      document.getElementById("btnCerrarSesion").addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        mostrarMensajeExito("👋 Sesión cerrada con éxito.");
+        setTimeout(() => location.reload(), 1500);
+      });
+    });
+  </script>
 </body>
 </html>

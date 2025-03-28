@@ -1,33 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPG - Ruko Game</title>
-    <link rel="stylesheet" href="../css/estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RPG - Ruko Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/estilos.css" />
 </head>
-<body>
-    <header>
-        <h1>Juegos de RPG</h1>
-        <a href="../index.html">Volver al inicio</a>
-    </header>
-    <section>
-        <div class="juego">
-            <img src="../img/rpg1.jpg" alt="The Witcher 3">
-            <div class="info">
-                <h2>The Witcher 3: Wild Hunt</h2>
-                <p>Juego de rol en mundo abierto con combates y toma de decisiones.</p>
-            </div>
-            <p class="precio"><strong>Precio:</strong> $35.990 CLP</p>
-        </div>
-        <div class="juego">
-            <img src="../img/rpg2.jpg" alt="Final Fantasy VII Remake">
-            <div class="info">
-                <h2>Final Fantasy VII Remake</h2>
-                <p>RPG con combates dinámicos y una historia épica.</p>
-            </div>
-            <p class="precio"><strong>Precio:</strong> $42.990 CLP</p>
-        </div>
-    </section>
+<body class="bg-black text-white">
+
+  <!-- Encabezado unificado -->
+  <header class="d-flex justify-content-between align-items-center p-3">
+    <h1 class="m-0">Juegos de RPG</h1>
+    <div class="d-flex align-items-center">
+      <div id="infoUsuario" class="me-3 text-warning small text-end"></div>
+      <a href="../login.html" id="btnLogin" class="btn btn-outline-light me-2">Iniciar sesión</a>
+      <a href="../registro.html" id="btnRegistro" class="btn btn-warning me-2">Registrarse</a>
+      <button id="btnCerrarSesion" class="btn btn-danger me-2" style="display: none;">Cerrar sesión</button>
+      <a href="../carrito.html" class="position-relative">
+        <img src="../img/carrito.png" alt="Carrito" width="32" height="32" />
+        <span id="contadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-black" style="font-size: 0.75rem;">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenido dinámico -->
+  <main class="container my-4" data-categoria="rpg">
+    <div id="contenedorProductos">
+      <!-- Aquí se cargarán los productos RPG dinámicamente -->
+    </div>
+
+    <!-- Botón volver -->
+    <div class="text-center mt-4">
+      <a href="../index.html" class="btn btn-outline-warning">Volver al inicio</a>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/utilidades.js"></script>
+  <script src="../js/carrito.js"></script>
+  <script src="../js/cargar_productos.js"></script>
+  <script src="../js/roles.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      actualizarContador();
+
+      const usuario = JSON.parse(localStorage.getItem("usuario"));
+      if (usuario) {
+        document.getElementById("infoUsuario").innerHTML = `👋 Hola, <strong>${usuario.nombre}</strong> (${usuario.rol})`;
+
+        document.getElementById("btnLogin").style.display = "none";
+        document.getElementById("btnRegistro").style.display = "none";
+        document.getElementById("btnCerrarSesion").style.display = "inline-block";
+
+        document.getElementById("btnCerrarSesion").addEventListener("click", () => {
+          localStorage.removeItem("usuario");
+          mostrarMensajeExito("👋 Sesión cerrada con éxito.");
+          setTimeout(() => location.reload(), 1500);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,183 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --color-bg: #000;
+  --color-text: white;
+  --color-acento: #ff8800;
+  --color-acento-hover: #ffa733;
+  --color-error: #ff4d4d;
+  --color-fondo-error: #220000;
+}
+
 /* Estilos generales */
 body {
-    background-color: #000;
-    color: white;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Comic Neue', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 /* Encabezado */
 header {
-    background-color: black;
-    padding: 20px;
+  background-color: var(--color-bg);
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* Título principal */
 h1 {
-    font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 /* Estilos de navegación */
 nav h2 {
-    margin-top: 20px;
-    font-size: 1.8em;
+  margin-top: 20px;
+  font-size: 1.8em;
 }
 
 /* Contenedor de categorías */
 .categorias {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 /* Estilos para cada categoría en index.html */
 .categoria {
-    display: block;
-    width: 220px;
-    padding: 15px;
-    margin: 15px auto;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    background-color: black;
-    color: white;
-    border: 3px solid #ff8800;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+  display: block;
+  width: 220px;
+  padding: 15px;
+  margin: 15px auto;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 3px solid var(--color-acento);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Efecto hover en categorías */
 .categoria:hover {
-    background-color: #ff8800;
-    color: black;
-    transform: scale(1.1);
+  background-color: var(--color-acento);
+  color: var(--color-bg);
+  transform: scale(1.1);
 }
 
 /* Contenedor de los juegos */
 section {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
 }
 
-/*  alineación de los juegos */
+/* Alineación de los juegos */
 .juego {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    margin: 15px 0;
-    background-color: #222;
-    border: 2px solid #ff8800;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 15px 0;
+  background-color: #222;
+  border: 2px solid var(--color-acento);
+  border-radius: 10px;
 }
 
 /* Imágenes de los juegos */
 .juego img {
-    width: 120px;
-    height: auto;
-    margin-left: 15px;
-    border-radius: 5px;
+  width: 120px;
+  height: auto;
+  margin-left: 15px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.juego img:hover {
+  transform: scale(1.05);
 }
 
 /* Contenedor e información del juego */
 .info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    padding: 0 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 0 20px;
 }
 
 /* Nombre del juego */
 h2 {
-    font-size: 1.5em;
-    color: #ff8800;
-    margin-bottom: 5px;
+  font-size: 1.5em;
+  color: var(--color-acento);
+  margin-bottom: 5px;
 }
 
 /* Descripción del juego */
 p {
-    font-size: 1em;
-    margin: 5px 0;
+  font-size: 1em;
+  margin: 5px 0;
 }
 
-/* Precio  a la derecha */
+/* Precio */
 .precio {
-    font-weight: bold;
-    color: #ff8800 !important;
-    text-align: right;
-    width: 150px;
+  font-weight: bold;
+  color: var(--color-acento) !important;
+  text-align: right;
+  width: 150px;
 }
 
-/* Pie de página */
+/* Footer */
 footer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: black;
-    font-size: 0.9em;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--color-bg);
+  font-size: 0.9em;
 }
-/* Estilo para los campos inválidos */
+
+/* Campos inválidos */
 .is-invalid {
-    border: 2px solid #ff4d4d !important; /* Borde rojo más visible */
-    background-color: #220000 !important; /* Fondo oscuro para los campos con error */
-    color: white !important; /* Texto en blanco para mejor contraste */
+  border: 2px solid var(--color-error) !important;
+  background-color: var(--color-fondo-error) !important;
+  color: white !important;
 }
 
-/* Icono de error dentro de los inputs */
 .is-invalid:focus {
-    box-shadow: 0 0 10px #ff4d4d !important;
+  box-shadow: 0 0 10px var(--color-error) !important;
 }
 
-/* mensajes de error */
 .invalid-feedback {
-    color: #ff8080 !important; /* Rojo más suave */
-    font-size: 0.9em; /* Tamaño más pequeño */
-    font-weight: bold;
-}
-/* Posicion del botón de registro */
-header {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+  color: #ff8080 !important;
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
-/* Estilo del botón de registro */
+/* Botón de registro */
 .btn-registro {
-    background-color: #ff8800;
-    color: black;
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  background-color: var(--color-acento);
+  color: var(--color-bg);
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
-/* Efecto al pasar el mouse */
 .btn-registro:hover {
-    background-color: black;
-    color: #ff8800;
-    border: 2px solid #ff8800;
+  background-color: var(--color-bg);
+  color: var(--color-acento);
+  border: 2px solid var(--color-acento);
 }
 
-/* Adaptación a pantallas mas chicas */
+/* Responsive */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .btn-registro {
-        position: static;
-        margin-top: 10px;
-    }
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn-registro {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .juego {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .juego img {
+    margin-bottom: 15px;
+  }
+
+  .info {
+    text-align: center;
+    padding: 0;
+  }
+
+  .precio {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Mensaje de éxito */
+.mensaje-exito {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: var(--color-acento);
+  padding: 15px 25px;
+  border: 2px solid var(--color-acento);
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+/* Botones con sombra */
+button,
+.btn,
+a.btn {
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(255, 136, 0, 0.2);
+}
+
+button:hover,
+.btn:hover {
+  box-shadow: 0 4px 12px rgba(255, 136, 0, 0.4);
+}
+/* Ajuste visual para el contador del carrito */
+.carrito-icono {
+  position: relative;
+  display: inline-block;
+}
+
+.contador-carrito {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ffc107;
+  color: #000;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
 }
