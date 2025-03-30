@@ -257,3 +257,16 @@ button:hover,
   border-radius: 50%;
   font-weight: bold;
 }
+/* Textos de ayuda más visibles sobre fondo oscuro */
+.text-muted,
+small,
+.form-text,
+.texto-ayuda {
+  color: #cccccc !important; /* Gris claro, buen contraste en negro */
+  font-size: 1em;
+}
+
+/* Clase opcional para aplicar texto claro manualmente */
+.texto-claro {
+  color: #eeeeee !important;
+}
