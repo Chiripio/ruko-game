@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.getElementById("carrito-lista");
   const totalElement = document.getElementById("total-carrito");
