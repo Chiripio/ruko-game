@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
     const contenedor = document.getElementById("contenedorProductos");
