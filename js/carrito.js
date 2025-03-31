@@ -1,4 +1,5 @@
-// Función para agregar un juego al carrito
+
+
 function agregarAlCarrito(nombre, precio) {
   const juego = { nombre, precio };
 
