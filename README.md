@@ -26,3 +26,9 @@ Eduardo Guerrero Soto
 📍 Valparaíso, Chile  
 📧 edua.guerrero@gmail.com
 
+Sebastian Trujillo
+📍 Valparaíso, Chile  
+📧sf.trujillo@mgmail.com
+
+Jorge Uribe Jelves
+📍Santiago, Chile
