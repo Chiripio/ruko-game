@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 
     if (valido) {
-      mostrarMensajeExito("✅ Cambios guardados correctamente.");
+      mostrarMensajeExito("✅ Cambios guardados.");
 
       setTimeout(() => {
         $("#perfilForm")[0].reset(); // Limpiar campos
